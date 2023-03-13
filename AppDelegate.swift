@@ -22,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let gameViewController = GameViewController()
         window?.rootViewController = gameViewController
         
+        ACTManager.shared.launch()
+        
         
         // Override point for customization after application launch.
         return true
