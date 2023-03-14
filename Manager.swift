@@ -12,7 +12,8 @@ import SpriteKit
 class Manager {
     
     enum SceneType{
-        case MainMenu, GamePlay
+        case MainMenu
+        case GamePlay
     }
     
     private init(){}
@@ -57,7 +58,7 @@ class Manager {
     }
     
     func run(_ fileName: String, onNode: SKNode){
-        if.PlayerStats.shared.getSound(){
+        if PlayerStats.shared.getSound(){
             onNode.run(SKAction.playSoundFileNamed(fileName, waitForCompletion: false))
         }
     }

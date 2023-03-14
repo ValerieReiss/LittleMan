@@ -11,7 +11,7 @@ class GamePlay: SKScene {
     
     var backButton: BDButton{
         var button = BDButton(imageNamed: "button-yellow", title: "Back", buttonAction: {
-            Manager.shared.transition (self, toScene: Type.MainMenu, transition:
+            Manager.shared.transition (self, toScene: .MainMenu, transition:
             SKTransition.moveIn(with: .left, duration: 0.5))})
         button.zPosition = 1
         button.scaleTo(screenWithPercentage: 0.25)
