@@ -28,9 +28,12 @@ class MainMenu: SKScene {
                            
     override func didMove(to view: SKView) {
         print("123")
+        anchorPoint = CGPoint(x: 0.5, y:0.5)
+        addPlayButton()
+        
     }
                            
-    override func touchesBegan(touches: Set<UITouch> , with: <#T##UIEvent?#>){
+    override func touchesBegan(touches: Set<UITouch> , with: UIEvent?){
         for touch in touches {
             if touch == touches.first {
                 //ACTManager.shared.transition(self, toScene: .Gameplay)
@@ -39,4 +42,11 @@ class MainMenu: SKScene {
             }
         }
     }
+                           
+    func addPlayButton(){
+        let playButton = SKSpriteNode(imageNamed: "ButtonPlay")
+        playButton.position = CGPoint.zero
+        addChild(playButton)
+    }
+                           
 }
