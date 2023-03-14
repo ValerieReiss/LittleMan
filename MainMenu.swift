@@ -11,19 +11,18 @@ import SpriteKit
 class MainMenu: SKScene {
     var background: SKSpriteNode = {
         var sprite = SKSpriteNode (imageNamed: "background")
-        sprite.scaleTo (screenHeightPercentage: 1.8)
+        sprite.setScale(1.8)
         sprite.zPosition = 0
         return sprite}()
     
     lazy var playButton: BDButton = {
         var button = BDButton (imageNamed:"ButtonPlay", buttonAction: {
             
-            Manager.shared.transition (self, toScene: .GamePlay, transition:
-            SKTransition.moveIn(with: right, duration: 0.5))
+            Manager.shared.transition (self, toScene: .GamePlay, transition: SKTransition.moveIn(with: .right, duration: 0.5))
         })
-            let chance = CGFloat.random(1, max: 10)
+        let chance = CGFloat.random(in: 1...10)
             if chance <= 5 {}
-            else {self.startGamePlay ()}
+            else {GamePlay()}
             
             button.scaleTo(screenWithPercentage: 0.33)
             button.zPosition = 1
@@ -39,6 +38,5 @@ class MainMenu: SKScene {
         playButton.logAvailableFonts()
     }
                            
-    override func touchesBegan(touches: Set<UITouch> , with: UIEvent?){
-    }
+
 }

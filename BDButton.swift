@@ -10,14 +10,14 @@ import SpriteKit
 class BDButton: SKNode {
     var button: SKSpriteNode
     private var mask: SKSpriteNode
-    var cropNode: SKCropNode
+    var crop: SKCropNode
     private var action: () -> Void
     var isEnabled = true
     var titleLabel: SKLabelNode?
     
     
     init (imageNamed: String, title: String? = "", buttonAction: @escaping () -> Void) {
-        button = SKSpriteNode(imageNamed: )
+        button = SKSpriteNode(imageNamed: "")
         titleLabel = SKLabelNode(text: title)
         
         mask = SKSpriteNode(color: SKColor.black, size: button.size)
@@ -62,7 +62,7 @@ class BDButton: SKNode {
             addChild(titleLabel)
         }
         
-        addChild(cropNode)
+        addChild(crop)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
@@ -95,8 +95,7 @@ class BDButton: SKNode {
                     Manager.shared.run("music-glitter.mp3", onNode: self)
                     disable()
                     action()
-                    run(SKAction.sequence([SKAction.wait(forDuration: 0.2), SKAction.run({
-                        self.enable()
+                    run(SKAction.sequence([SKAction.wait(forDuration: 0.2), SKAction.run({self.enabled()
                     })]))
                 }
             }
@@ -117,17 +116,18 @@ class BDButton: SKNode {
     
     func logAvailableFonts(){
         for family: String in UIFont.familyNames {print("\(family)")}
-        for names: String in UIFont.fontNames(for FamilyNames: family){print("\(names)")}
+        //for names: String in UIFont.fontNames(for: FamilyNames: family)
+        //{print("\(names)")}
     }
     
-    func scaleTo(screenWithPercentage: CGFLoat){
+    func scaleTo(screenWithPercentage: CGFloat){
         let aspectRatio = button.size.height / button.size.width
         let screenWidth = Screensize.width
         var screenHeight = Screensize.height
         if DeviceType.isiPhoneX{
             screenHeight -= 80.0
         }
-        button.size.width = screenWidth * screenWidthPercentage
+        button.size.width = screenWidth * screenWithPercentage
         button.size.height = button.size.width * aspectRatio
     }
     
