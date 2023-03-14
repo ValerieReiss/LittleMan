@@ -16,37 +16,29 @@ class MainMenu: SKScene {
         return sprite}()
     
     lazy var playButton: BDButton = {
-    var button = BDButton (imageNamed:"ButtonPlay", buttonAction: {
-        let chance = CGFloat.random(1, max: 10)
-        if chance <= 5 {}
-        else {self.startGameplay ()}
+        var button = BDButton (imageNamed:"ButtonPlay", buttonAction: {
+            
+            Manager.shared.transition (self, toScene: .GamePlay, transition:
+            SKTransition.moveIn(with: right, duration: 0.5))
+        })
+            let chance = CGFloat.random(1, max: 10)
+            if chance <= 5 {}
+            else {self.startGamePlay ()}
+            
+            button.scaleTo(screenWithPercentage: 0.33)
+            button.zPosition = 1
+            return button
         
-        button.scaleTo(screenWithPercentage: 0.33)
-        button.zPosition = 1
-        return button}()
-    }
+    }()
                            
     override func didMove(to view: SKView) {
         print("123")
         anchorPoint = CGPoint(x: 0.5, y:0.5)
-        addPlayButton()
-        
+        playButton.position = CGPoint.zero
+        addChild(playButton)
+        playButton.logAvailableFonts()
     }
                            
     override func touchesBegan(touches: Set<UITouch> , with: UIEvent?){
-        for touch in touches {
-            if touch == touches.first {
-                //ACTManager.shared.transition(self, toScene: .Gameplay)
-                ACTManager.shared.transition (self, toScene: .Gameplay, transition:
-                SKTransition.moveIn(with: right, duration: 0.5))
-            }
-        }
     }
-                           
-    func addPlayButton(){
-        let playButton = SKSpriteNode(imageNamed: "ButtonPlay")
-        playButton.position = CGPoint.zero
-        addChild(playButton)
-    }
-                           
 }

@@ -15,14 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         
-        window: UIWindow?
+        window = UIWindow()
         window?.makeKeyAndVisible()
         
         
         let gameViewController = GameViewController()
         window?.rootViewController = gameViewController
         
-        ACTManager.shared.launch()
+        Manager.shared.launch()
         
         
         // Override point for customization after application launch.

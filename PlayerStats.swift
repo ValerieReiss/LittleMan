@@ -12,7 +12,7 @@ let kSoundState = "kSoundState"
 
 class PlayerStats {
     private init() {}
-    static let shared = Manager()
+    static let shared = PlayerStats()
     
     func setSounds(_ state: Bool){
         UserDefaults.standard.set(state, forKey: kSoundState)

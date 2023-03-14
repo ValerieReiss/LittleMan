@@ -8,13 +8,15 @@
 import Foundation
 import SpriteKit
 
-enum SceneType{
-    case MainMenu, Gameplay
-}
 
 class Manager {
+    
+    enum SceneType{
+        case MainMenu, GamePlay
+    }
+    
     private init(){}
-    static let share Manager()
+    static let shared = Manager()
     
     public func launch(){
         firstLaunch()
@@ -42,15 +44,15 @@ class Manager {
         }else{
             scene.scaleMode = .resizeFill
             fromScene.view?.presentScene(scene)
-        }    }
-    
+        }
+    }
     
     func getScene(_ sceneType: SceneType) -> SKScene? {
         switch sceneType{
         case SceneType.MainMenu:
-            return MainMenu(size CGSize(width: ScreenSize.width, height: ScreenSize.height))
+            return MainMenu(size: CGSize(width: Screensize.width, height: Screensize.height))
         case SceneType.GamePlay:
-            return GamePlay(size CGSize(width: ScreenSize.width, height: ScreenSize.height))
+            return GamePlay(size: CGSize(width: Screensize.width, height: Screensize.height))
         }
     }
     

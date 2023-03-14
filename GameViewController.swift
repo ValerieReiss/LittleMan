@@ -21,10 +21,10 @@ class GameViewController: UIViewController {
         
         view.addSubview(skView)
         
-        skView.topAnchor.constraint(equalTo: top.viewAnchor).isActive = true
-        skView.rightAnchor.constraint(equalTo: right.viewAnchor).isActive = true
-        skView.bottomAnchor.constraint(equalTo: bottom.viewAnchor).isActive = true
-        skView.leftAnchor.constraint(equalTo: left.viewAnchor).isActive = true
+        skView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        skView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        skView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        skView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         
         let scene = MainMenu(size: CGSize(width: Screensize.width, height: Screensize.height))
         scene.scaleMode = .aspectFill

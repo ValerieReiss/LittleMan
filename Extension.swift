@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SpriteKit
+
 
 enum UIInterfaceIdiom: Int {
     case undefined
@@ -21,13 +23,41 @@ struct Screensize {
 }
 
 struct DeviceType {
-    static let isiPhone4OrLess = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength < 568.0
-    static let isiPhone5 = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength >= 568.0
+    static let isiPhone4OrLess = UIDevice.current.userInterfaceIdiom == .phone && Screensize.maxLength < 568.0
+    static let isiPhone5 = UIDevice.current.userInterfaceIdiom == .phone && Screensize.maxLength >= 568.0
     static let isiPhone6 = UIDevice.current.userInterfaceIdiom == .phone && Screensize.maxLength == 667.8
-    static let isiPhone6Plus = UIDevice.current.userInterfaceIdiom == .phone && ScreenSize.maxLength == 736.8
+    static let isiPhone6Plus = UIDevice.current.userInterfaceIdiom == .phone && Screensize.maxLength == 736.8
     static let isiPhoneX = UIDevice.current.userInterfaceIdiom ==
-    .phone && ScreenSize.maxLength == 812.0
-    static let isiPad = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.maxLength >= 1024.0
-    static let isiPadPro = UIDevice.current.userInterfaceIdiom == .pad && ScreenSize.maxLength >= 1366.0
+    .phone && Screensize.maxLength == 812.0
+    static let isiPad = UIDevice.current.userInterfaceIdiom == .pad && Screensize.maxLength >= 1024.0
+    static let isiPadPro = UIDevice.current.userInterfaceIdiom == .pad && Screensize.maxLength >= 1366.0
     
 }
+
+public extension CGFloat{
+    public static func universalFont(size: CGFloat) -> CGFloat {
+        if DeviceType.isiPhone4OrLess {
+            return size * 0.6
+        }
+        if DeviceType.isiPhone5 {
+            return size * 0.8
+        }
+        if DeviceType.isiPhone6 {
+            return size * 1.0
+        }
+        if DeviceType.isiPhone6Plus {
+            return size * 1.0
+        }
+        if DeviceType.isiPhoneX {
+            return size * 1.0
+        }
+        
+        if DeviceType.isiPad {
+            return size * 2.1
+        }
+        if DeviceType.isiPadPro {
+            return size * 2.1
+        } else {return size * 1.0}
+    }
+}
+ 
